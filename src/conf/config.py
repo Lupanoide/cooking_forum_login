@@ -32,9 +32,6 @@ class Config():
     def get_db_url(self):
         return f'postgresql://{self.get_db_username()}:{self.get_db_password()}@{self.get_db_host()}/{self.get_db_dbname()}'
 
-    def get_db_test_url(self):
-        return f'postgresql://{self.get_db_username()}:{self.get_db_password()}@localhost:5432/test'
-
     def get_jwt_secret_key(self):
         return self.config.get("json_web_token", "secret_key")
 
