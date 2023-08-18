@@ -22,9 +22,9 @@ async def initialization(conn):
     await load_sqlfile(conn, conf.get_table_otp_declaration())
 
 @app.on_event("startup")
-@repeat_every(seconds=60 * 5)
-def remove_expired_tokens_task() -> None:
-    remove_expired_tokens(database=Depends(database.connection))
+@repeat_every(seconds=60 * 5, wait_first=True)
+async def remove_expired_tokens_task() -> None:
+    await remove_expired_tokens(database=Depends(database.connection))
 
 
 @app.get('/', response_class=RedirectResponse, include_in_schema=False)
