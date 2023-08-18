@@ -70,7 +70,7 @@ Installare le dipendenze:
 
 `pip install --upgrade -r requirements.txt`
 
-È necessario cambiare il file di configurazione e inserire quello di test. Per farlo entrare nelle cartelle `./src/conf` e aprire il file `config.py`. Qui nella classe config occorre decommentare la linea 
+È necessario cambiare il file `.ini` di configurazione e inserire quello di test. Per farlo entrare nella cartella `./src/conf` e aprire il file `config.py`. Qui nella funzione `__init__` della classe `Config` occorre decommentare la linea 
 
 - `name = os.path.abspath( os.path.join( __file__ , r"../../conf/properties_test.ini"))` 
 
