@@ -14,7 +14,7 @@ E attendere il completamento della fase di creazione. Ora sarà possibile, in qu
 
 e
 
-- `http://localhost:8000/docs`
+- `http://localhost:8000/`
 
 **Sono stati creati 4 endpoint:**
  - `/signup` un servizio **POST** per la registrazione di nuovi utenti, in  cui è possibile abilitare l'autenticazione a due fattori
