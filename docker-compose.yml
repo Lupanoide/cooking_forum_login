@@ -1,0 +1,35 @@
+version: '2.1'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    ports:
+      - '5432:5432'
+    networks:
+      - "mynet"
+
+
+  cooking_forum:
+    image: cooking_forum:1.0
+    depends_on:
+      postgres:
+        condition: service_healthy
+    links:
+      - postgres
+    ports:
+      - '8000:8000'
+    expose:
+      - '8000'
+    networks:
+      - "mynet"
+
+networks:
+  mynet:

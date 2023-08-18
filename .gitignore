@@ -1,0 +1,7 @@
+myvenv
+*.log
+__pycache__/
+*.py[cod]
+.git
+.idea
+.DS_Store
