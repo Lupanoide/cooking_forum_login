@@ -4,11 +4,11 @@ Per testare il servizio:
 
 - `docker build -t "cooking_forum:1.0" .`
 
-Per far girare l'applicazione. La mia applicazione si appoggia su un database postgres. Per una migliore integrazione ho deciso di deployare con docker-compose. Per tirare su l'istanza
+La mia applicazione si appoggia su un database postgres. Per una migliore integrazione ho deciso di deployare con docker-compose. Per tirare su l'istanza
 
 - `docker-compose up`
 
-E attendere il completamento della fase di creazione. Ora sarà possibile, in quanto i servizi sono sviluppati con FASTAPI, la documentazione in formato Open Api al seguente indirizzo:
+E attendere il completamento della fase di start dei container. Ora sarà possibile, in quanto i microservizi sono sviluppati con FASTAPI, vedere la documentazione in formato Open Api al seguente indirizzo:
 
 - `http://localhost:8000/docs`
 
@@ -32,7 +32,7 @@ e
 
 `r = requests.post("http://localhost:8000/signup", json={"username": r"michele_lupo@gmail.it", "password": "pappappero", "name": "Michele", "surname": "Lupo"})`
 
-**Fare il login  dell'utente appena creato**
+**Fare il login dell'utente appena creato**
 
 `r = requests.post("http://localhost:8000/login", json={"username": r"michele_lupo@gmail.it", "password": "pappappero"})`
 
@@ -54,11 +54,11 @@ Ora occorre intercettare la otp nei log dell'applicazione. È necessario andare 
 
 # Configurare l'ambiente di sviluppo in locale e lanciare i test 
 
- Chiudere l'applicazione. Per farlo andare nella  scheda del terminale in cui si è lanciato  il comando `docker-compose up` e tirarla giù con `Control+C`. A questo punto sarà possibile rimuovere i container creati dal compose:
+ Chiudere l'applicazione. Per farlo andare nella scheda del terminale in cui si è lanciato il comando `docker-compose up` e tirarla giù con `Control+C`. A questo punto sarà possibile rimuovere i container creati dal compose:
 
 `docker-compose down`
 
-Ora è  consigliato creare un python virtual nvironment in cui saranno installate tutte le librerie necessarie. Per farlo creare un venv nella cartella `cooking_forum_login`:
+Ora è consigliato creare un python virtual environment in cui saranno installate tutte le librerie necessarie. Per farlo creare un venv nella cartella `cooking_forum_login`:
 
 `python -m venv myvenv`
 
@@ -70,7 +70,7 @@ Installare le dipendenze:
 
 `pip install --upgrade -r requirements.txt`
 
-È necessario cambiare il file di configurazione e inserire quello di test. Per farlo entrare nelle cartelle ./src/conf e aprire il file `config.py`. qui  nella classe config  occorre decommentare la linea 
+È necessario cambiare il file di configurazione e inserire quello di test. Per farlo entrare nelle cartelle `./src/conf` e aprire il file `config.py`. Qui nella classe config occorre decommentare la linea 
 
 - `name = os.path.abspath( os.path.join( __file__ , r"../../conf/properties_test.ini"))` 
 
@@ -78,7 +78,7 @@ e commentare la linea
 
 - `name = os.path.abspath( os.path.join( __file__ , r"../../conf/properties_prod.ini"))`
 
-Ora si può lanciare  un container docker del tutto analogo a quello usato dal compose. Per farlo aprire un'altra scheda del terminale e lanciare: 
+Ora si può creare un container docker di postgres del tutto analogo a quello creato dal compose, a partire dalla stessa immagine. Per farlo aprire un'altra scheda del terminale e lanciare: 
 
 `docker run --name postgres --rm -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres  -p 5432:5432 postgres:15-alpine`
 
