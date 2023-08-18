@@ -16,10 +16,10 @@ async def retrieve_otp(database, username: str):
     otp = await database.fetchrow(f"SELECT token FROM otp WHERE username = '{username}'")
     return otp
 
-async def load_sqlfile(db, file: str):
+async def load_sqlfile(database, file: str):
     with open(file,"r") as f:
         data = f.read()
         await db.execute(data)
 
-async def remove_expired_tokens(db):
+async def remove_expired_tokens(database):
     await database.execute("DELETE from otp  WHERE timestamp < NOW() - interval '5' minute;")
