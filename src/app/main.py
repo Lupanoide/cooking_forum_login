@@ -24,7 +24,7 @@ async def initialization(conn):
 @app.on_event("startup")
 @repeat_every(seconds=60 * 5, wait_first=True)
 async def remove_expired_tokens_task() -> None:
-    await remove_expired_tokens(database=Depends(database.connection))
+    await remove_expired_tokens(database)
 
 
 @app.get('/', response_class=RedirectResponse, include_in_schema=False)
