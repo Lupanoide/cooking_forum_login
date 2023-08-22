@@ -19,7 +19,7 @@ async def retrieve_otp(database, username: str):
 async def load_sqlfile(database, file: str):
     with open(file,"r") as f:
         data = f.read()
-        await db.execute(data)
+        await database.execute(data)
 
 async def remove_expired_tokens(database):
     await database.execute("DELETE from otp  WHERE timestamp < NOW() - interval '5' minute;")
