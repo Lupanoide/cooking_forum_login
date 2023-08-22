@@ -54,7 +54,7 @@ Ora occorre intercettare la otp nei log dell'applicazione. È necessario andare 
 
 # Configurare l'ambiente di sviluppo in locale e lanciare i test 
 
- Chiudere l'applicazione. Per farlo andare nella scheda del terminale in cui si è lanciato il comando `docker-compose up` e tirarla giù con `Control+C`. A questo punto sarà possibile rimuovere i container creati dal compose:
+ Chiudere l'applicazione. Per farlo andare nella scheda del terminale in cui si è lanciato il comando `docker-compose up` e tirarla giù con `Control + C`. A questo punto sarà possibile rimuovere i container creati dal compose:
 
 `docker-compose down`
 
